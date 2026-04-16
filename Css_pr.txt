@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title>Nested Controllers</title>
+
+    <!-- AngularJS CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Parent Controller -->
+    <div ng-controller="parentCtrl">
+        <h2>Parent Controller</h2>
+        <p>Name: {{name}}</p>
+        <p>Age: {{age}}</p>
+
+        <hr>
+
+        <!-- Child Controller inside Parent -->
+        <div ng-controller="childCtrl">
+            <h3>Child Controller</h3>
+            <p>Name: {{name}}</p>
+            <p>Age: {{age}}</p>
+            <p>City: {{city}}</p>
+        </div>
+    </div>
+
+<script>
+var app = angular.module("myApp", []);
+
+// Parent Controller
+app.controller("parentCtrl", function($scope) {
+    $scope.name = "Naren";
+    $scope.age = 21;
+});
+
+// Child Controller
+app.controller("childCtrl", function($scope) {
+    $scope.name = "Riya";   // overrides parent value
+    $scope.city = "Mumbai";
+});
+</script>
+
+</body>
+</html>
